@@ -93,7 +93,11 @@ public class MultiThreadPutMap {
         String line = null;
         
         try {
-            while ((line = reader.readLine()) != null && count < batchSize) {
+            while (count < batchSize) {
+                line = reader.readLine();
+                if (line == null) {
+                    break;
+                }
                 lines.add(line);
                 count++;
                 processCount++;
